@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.Naive", "Bss.Optimization.Pottery.Naive\Bss.Optimization.Pottery.Naive.csproj", "{D52013BC-F537-480B-A942-884F24C51CA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BssOptimization.Pottery.Test", "BssOptimization.Pottery.Test\BssOptimization.Pottery.Test.csproj", "{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.Test", "BssOptimization.Pottery.Test\Bss.Optimization.Pottery.Test.csproj", "{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.LP", "Bss.Optimization.Pottery.LP\Bss.Optimization.Pottery.LP.csproj", "{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}"
 EndProject

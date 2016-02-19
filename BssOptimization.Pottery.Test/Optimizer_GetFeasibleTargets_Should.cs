@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Bss.Optimization.Pottery.Interfaces;
 using System.Linq;
 
-namespace BssOptimization.Pottery.Test
+namespace Bss.Optimization.Pottery.Test
 {
     [TestClass]
     public class Optimizer_GetFeasibleTargets_Should

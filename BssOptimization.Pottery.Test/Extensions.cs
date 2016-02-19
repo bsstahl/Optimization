@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BssOptimization.Pottery.Test
+namespace Bss.Optimization.Pottery.Test
 {
     public static class Extensions
     {

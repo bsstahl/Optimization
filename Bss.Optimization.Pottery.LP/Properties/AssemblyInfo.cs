@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Bss.Optimization.Pottery.LP")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright © 2015 by Barry S. Stahl")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
