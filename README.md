@@ -1,6 +1,7 @@
 # Optimization Demos
-A series of demos on combinatorial optimization designed to help software developers
-learn the basics of Constraint Programming, along with Linear and Mixed-Integer Programming.
+A series of demos on combinatorial optimization, written in C#, designed to help software 
+developers learn the basics of Constraint Programming, along with Linear and 
+Mixed-Integer Programming.
 
 ## Bss.Optimization.Appetizers.sln
 An implementation of a very simple, knapsack-style solution to the problem described
