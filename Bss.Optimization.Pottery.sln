@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BssOptimization.Pottery.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.LP", "Bss.Optimization.Pottery.LP\Bss.Optimization.Pottery.LP.csproj", "{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AEE3937B-4BF8-47AE-B17C-54F01CA878AD}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,23 +42,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://bsstahl.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Bss.Optimization.Pottery.LP\\Bss.Optimization.Pottery.LP.csproj
-		SccProjectName1 = Bss.Optimization.Pottery.LP
-		SccLocalPath1 = Bss.Optimization.Pottery.LP
-		SccProjectUniqueName2 = Bss.Optimization.Pottery.Naive\\Bss.Optimization.Pottery.Naive.csproj
-		SccProjectName2 = Bss.Optimization.Pottery.Naive
-		SccLocalPath2 = Bss.Optimization.Pottery.Naive
-		SccProjectUniqueName3 = Bss.Optimization.Pottery\\Bss.Optimization.Pottery.csproj
-		SccProjectName3 = Bss.Optimization.Pottery
-		SccLocalPath3 = Bss.Optimization.Pottery
-		SccProjectUniqueName4 = BssOptimization.Pottery.Test\\BssOptimization.Pottery.Test.csproj
-		SccProjectName4 = BssOptimization.Pottery.Test
-		SccLocalPath4 = BssOptimization.Pottery.Test
 	EndGlobalSection
 EndGlobal
