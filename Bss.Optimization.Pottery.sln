@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery", "Bss.Optimization.Pottery\Bss.Optimization.Pottery.csproj", "{30B5F8DB-C79D-4FDB-9957-9FDD3026C878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.Naive", "Bss.Optimization.Pottery.Naive\Bss.Optimization.Pottery.Naive.csproj", "{D52013BC-F537-480B-A942-884F24C51CA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BssOptimization.Pottery.Test", "BssOptimization.Pottery.Test\BssOptimization.Pottery.Test.csproj", "{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.LP", "Bss.Optimization.Pottery.LP\Bss.Optimization.Pottery.LP.csproj", "{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30B5F8DB-C79D-4FDB-9957-9FDD3026C878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B5F8DB-C79D-4FDB-9957-9FDD3026C878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B5F8DB-C79D-4FDB-9957-9FDD3026C878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B5F8DB-C79D-4FDB-9957-9FDD3026C878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D52013BC-F537-480B-A942-884F24C51CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52013BC-F537-480B-A942-884F24C51CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52013BC-F537-480B-A942-884F24C51CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52013BC-F537-480B-A942-884F24C51CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB7145D-9FC7-4221-B490-7F3BC81FAE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://bsstahl.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Bss.Optimization.Pottery.LP\\Bss.Optimization.Pottery.LP.csproj
+		SccProjectName1 = Bss.Optimization.Pottery.LP
+		SccLocalPath1 = Bss.Optimization.Pottery.LP
+		SccProjectUniqueName2 = Bss.Optimization.Pottery.Naive\\Bss.Optimization.Pottery.Naive.csproj
+		SccProjectName2 = Bss.Optimization.Pottery.Naive
+		SccLocalPath2 = Bss.Optimization.Pottery.Naive
+		SccProjectUniqueName3 = Bss.Optimization.Pottery\\Bss.Optimization.Pottery.csproj
+		SccProjectName3 = Bss.Optimization.Pottery
+		SccLocalPath3 = Bss.Optimization.Pottery
+		SccProjectUniqueName4 = BssOptimization.Pottery.Test\\BssOptimization.Pottery.Test.csproj
+		SccProjectName4 = BssOptimization.Pottery.Test
+		SccLocalPath4 = BssOptimization.Pottery.Test
+	EndGlobalSection
+EndGlobal
