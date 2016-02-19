@@ -9,4 +9,4 @@ in [XKCD 287](http://xkcd.com/287).
  
 ## Bss.Optimization.Pottery.sln
 Two solution implementations for the Pete's Pottery Paradise problem described in the
-presentation, [A Developer's Guide to Finding Optimal Solutions](http://1drv.ms/1qqbcbh).
+presentation, [A Developer's Guide to Finding Optimal Solutions](http://1drv.ms/1QqBcbh).
