@@ -22,6 +22,7 @@ then searches all feasible solutions to determine the optimal solution.  This im
 fails when the search space is very large.
 
 ###LP Optimization using the Gurobi Solver
-Uses a Linear Program with linear constraints and a linear objective, along with integer 
+Uses a Linear Program with linear constraints and a linear objective along with integer 
 variables to determine the optimal solution. This implementation works well even with an
-extremely large search space.
+extremely large search space.  The Gurobi solver requires a license, details of which can 
+be found on [Gurobi.com](http://www.gurobi.com/).
