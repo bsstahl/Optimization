@@ -5,7 +5,7 @@ Mixed-Integer Programming.
 
 **Note: Portions of these demos make use of the Gurobi solver which requires a license.
 Details on getting an evaluation license to run the full samples can 
-be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).
+be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).**
 
 
 ## Bss.Optimization.Appetizers.sln
