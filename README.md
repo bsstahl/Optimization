@@ -3,9 +3,14 @@ A series of demos on combinatorial optimization, written in C#, designed to help
 developers learn the basics of Constraint Programming, along with Linear and 
 Mixed-Integer Programming.
 
+**Note: Portions of these demos make use of the Gurobi solver which requires a license.
+Details on getting an evaluation license to run the full samples can 
+be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).
+
+
 ## Bss.Optimization.Appetizers.sln
 An implementation of a very simple, knapsack-style solution to the problem described
-in [XKCD 287](http://xkcd.com/287). 
+in [XKCD 287](http://xkcd.com/287) using the Gurobi solver. 
 
  
 ## Bss.Optimization.Pottery.sln
@@ -20,10 +25,9 @@ Bss.Optimization.Pottery.Test.Extensions.cs file.**
 ###Naive Solution
 Traverses the entire possible search-space attempting to locate feasible solutions, 
 then searches all feasible solutions to determine the optimal solution.  This implementation
-fails when the search space is very large.
+fails when the search space is very large but does not require a separate solver.
 
 ###LP Optimization using the Gurobi Solver
 Uses a Linear Program with linear constraints and a linear objective along with integer 
-variables to determine the optimal solution. This implementation works well even with an
-extremely large search space.  The Gurobi solver requires a license, details of which can 
-be found on [Gurobi.com](http://www.gurobi.com/).
+variables to determine the optimal solution. This implementation, which uses the Gurobi solver,
+works well even with an extremely large search space. 
