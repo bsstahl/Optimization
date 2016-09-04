@@ -13,8 +13,9 @@ namespace Bss.Optimization.Pottery.Test
         {
             // TODO: Set which optimizer you want to use in the tests here
 
-            return new Bss.Optimization.Pottery.Naive.Optimizer();
+            // return new Bss.Optimization.Pottery.Naive.Optimizer();
             // return new Bss.Optimization.Pottery.LP.Optimizer();
+            return new Bss.Optimization.Pottery.Glop.Optimizer();
         }
     }
 }

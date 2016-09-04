@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery", "Bss.Optimization.Pottery\Bss.Optimization.Pottery.csproj", "{30B5F8DB-C79D-4FDB-9957-9FDD3026C878}"
 EndProject
@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Pottery.Glop", "Bss.Optimization.Pottery.Glop\Bss.Optimization.Pottery.Glop.csproj", "{77242247-77C3-4409-91C2-D8A4B2C990E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE7CEC54-92E0-4008-AE6B-6C1CD8B71DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77242247-77C3-4409-91C2-D8A4B2C990E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77242247-77C3-4409-91C2-D8A4B2C990E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77242247-77C3-4409-91C2-D8A4B2C990E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77242247-77C3-4409-91C2-D8A4B2C990E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

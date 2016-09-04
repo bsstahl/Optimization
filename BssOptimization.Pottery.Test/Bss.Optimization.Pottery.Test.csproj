@@ -61,6 +61,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bss.Optimization.Pottery.Glop\Bss.Optimization.Pottery.Glop.csproj">
+      <Project>{77242247-77c3-4409-91c2-d8a4b2c990e1}</Project>
+      <Name>Bss.Optimization.Pottery.Glop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bss.Optimization.Pottery.LP\Bss.Optimization.Pottery.LP.csproj">
       <Project>{fe7cec54-92e0-4008-ae6b-6c1cd8b71dcb}</Project>
       <Name>Bss.Optimization.Pottery.LP</Name>
