@@ -9,11 +9,11 @@ in [XKCD 287](http://xkcd.com/287).
 
  
 ## Bss.Optimization.Pottery.sln
-Two solution implementations for the Pete's Pottery Paradise problem described in the
+Three solution implementations for the Pete's Pottery Paradise problem described in the
 presentation, [A Developer's Guide to Finding Optimal Solutions](http://1drv.ms/1QqBcbh). 
-Both solutions exist within the confines of a single Visual Studio solution file.
+All solutions exist within the confines of a single Visual Studio solution file.
 
-**Note: To switch between the naive and LP optimizers, uncomment the appropriate 
+**Note: To switch between the various optimizers, uncomment the appropriate 
 implementation in the Create method found in the 
 Bss.Optimization.Pottery.Test.Extensions.cs file.**
 
@@ -27,3 +27,9 @@ Uses a Linear Program with linear constraints and a linear objective along with 
 variables to determine the optimal solution. This implementation works well even with an
 extremely large search space.  The Gurobi solver requires a license, details of which can 
 be found on [Gurobi.com](http://www.gurobi.com/).
+
+###LP Optimization using the Google Solver (new)
+Uses a Linear Program with linear constraints and a linear objective along with integer 
+variables to determine the optimal solution. This implementation works well even with an
+extremely large search space.  The GLOP solver is Google's open-source linear programming system, 
+details of which can be found on [developers.google.com](https://developers.google.com/optimization/lp/glop).
