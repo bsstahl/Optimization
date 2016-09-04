@@ -3,6 +3,11 @@ A series of demos on combinatorial optimization, written in C#, designed to help
 developers learn the basics of Constraint Programming, along with Linear and 
 Mixed-Integer Programming.
 
+**Note: Portions of these demos make use of the Gurobi solver which requires a license.
+Details on getting an evaluation license to run the full samples can 
+be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).**
+
+
 ## Bss.Optimization.Appetizers.sln
 An implementation of a very simple, knapsack-style solution to the problem described
 in [XKCD 287](http://xkcd.com/287). 
