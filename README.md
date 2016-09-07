@@ -9,8 +9,30 @@ be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).**
 
 
 ## Bss.Optimization.Appetizers.sln
-An implementation of a very simple, knapsack-style solution to the problem described
+Multiple solution implementations to the very simple, knapsack-style problem described
 in [XKCD 287](http://xkcd.com/287). 
+
+**Note: To switch between the various optimizers, uncomment the appropriate 
+implementation in the GetOptimizer method found in the 
+Bss.Optimization.Appetizers.Program.cs file.**
+
+###Naive Solution (new)
+Traverses the entire possible search-space attempting to locate feasible solutions, 
+then searches all feasible solutions to determine the optimal solution.  This implementation
+fails when the search space is very large.
+
+###LP Optimization using the Gurobi Solver
+Uses a Linear Program with integer constraints and a linear objective along with integer 
+variables to determine the optimal solution. This implementation works well even with an
+extremely large search space.  The Gurobi solver requires a license, details of which can 
+be found on [Gurobi.com](http://www.gurobi.com/).
+
+###LP Optimization using the Google Solver (new)
+Uses a Linear Program with integer constraints and a linear objective along with integer 
+variables to determine the optimal solution. This implementation works well even with an
+extremely large search space.  The GLOP solver is Google's open-source linear programming system, 
+details of which can be found on [developers.google.com](https://developers.google.com/optimization/lp/glop).
+
 
  
 ## Bss.Optimization.Pottery.sln
