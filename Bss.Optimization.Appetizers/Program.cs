@@ -1,36 +1,32 @@
-﻿using Gurobi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bss.Optimization.Appetizers.Entities;
 
 namespace Bss.Optimization.Appetizers
 {
     class Program
     {
         // Based on XKCD #287 at http://xkcd.com/287/
+        // Uncomment the desired optimizer in the GetOptimizer method below
 
         static void Main(string[] args)
         {
-            var env = new GRBEnv("Menu.log");
             var items = new MenuItemCollection();
-            var c = new Model(env, items, 15.05);
-            var results = c.Optimize();
-            DisplayResults(results, items);
+            var c = GetOptimizer();
+            var results = c.GetQuantities(items, 15.05);
+
+            Console.WriteLine("Optimal Solution:");
+            Console.WriteLine(results.ToString(items));
         }
 
-        private static void DisplayResults(OptimizationResults results, IEnumerable<MenuItem> items)
+        private static Interfaces.IAppetizerOptimizer GetOptimizer()
         {
-            Console.WriteLine($"Objective Value: {results.ObjectiveValue}");
-            var n = results.Items.GetLength(0);
-            for (int j = 0; j < n; j++)
-            {
-                var item = items.Single(i => i.Id == j);
-                Console.WriteLine($"{item.Name}: {results.Items[j]}");
-            }
-
-            Console.WriteLine(string.Empty);
+            return new Bss.Optimization.Appetizers.Naive.Model();
+            // return new Bss.Optimization.Appetizers.Gurobi.Model();
+            // return new Bss.Optimization.Appetizers.Glop.Model();
         }
 
     }

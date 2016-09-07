@@ -4,32 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bss.Optimization.Appetizers.Entities;
 
-namespace Bss.Optimization.Appetizers
+namespace Bss.Optimization.Appetizers.Gurobi
 {
-    public class Model
+    public class Model: Interfaces.IAppetizerOptimizer
     {
         GRBEnv _env;
         GRBModel _model;
-
         GRBVar[] _v;
 
-
-        public Model(GRBEnv env, IEnumerable<MenuItem> items, double totalPrice)
+        public Model()
         {
-            _env = env;
+            _env = new GRBEnv("Optimization.log");
             _model = new GRBModel(_env);
+        }
 
+        public OptimizationResults GetQuantities(IEnumerable<MenuItem> items, double totalPrice)
+        {
             CreateVariables(items);
             CreateConstraints(totalPrice, items);
             CreateObjective(items);
-        }
 
-        public OptimizationResults Optimize()
-        {
             _model.Optimize();
+
             var results = new OptimizationResults();
-            results.Items = _model.Get(GRB.DoubleAttr.X, _v);
+            results.Items = _model.Get(GRB.DoubleAttr.X, _v).ToIntArray();
             results.ObjectiveValue = _model.Get(GRB.DoubleAttr.ObjVal);
             return results;
         }
