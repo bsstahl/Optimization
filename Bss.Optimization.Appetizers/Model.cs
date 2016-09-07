@@ -1,76 +1,86 @@
-﻿using Gurobi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Google.OrTools.LinearSolver;
 
 namespace Bss.Optimization.Appetizers
 {
     public class Model
     {
-        GRBEnv _env;
-        GRBModel _model;
+        Solver _model;
+        Variable[] _itemQuantityVariable;
+        Variable _itemDiscountVariable;
+        Objective _objective;
+        IEnumerable<MenuItem> _items;
+        double _totalPrice;
 
-        GRBVar[] _v;
-
-
-        public Model(GRBEnv env, IEnumerable<MenuItem> items, double totalPrice)
+        public Model(IEnumerable<MenuItem> items, double totalPrice)
         {
-            _env = env;
-            _model = new GRBModel(_env);
-
-            CreateVariables(items);
-            CreateConstraints(totalPrice, items);
-            CreateObjective(items);
+            _items = items;
+            _totalPrice = totalPrice;
+            _model = Solver.CreateSolver("MipSolver", "CBC_MIXED_INTEGER_PROGRAMMING");
+            CreateVariables();
+            CreateObjective();
+            CreateConstraints(true);
         }
 
         public OptimizationResults Optimize()
         {
-            _model.Optimize();
             var results = new OptimizationResults();
-            results.Items = _model.Get(GRB.DoubleAttr.X, _v);
-            results.ObjectiveValue = _model.Get(GRB.DoubleAttr.ObjVal);
+
+            var optimizationStatus = _model.Solve();
+            if (optimizationStatus == Solver.OPTIMAL)
+            {
+                int n = _itemQuantityVariable.Count();
+                results.Items = new double[n];
+                results.ObjectiveValue = 0.0;
+
+                foreach (var item in _items)
+                    results.Items[item.Id] = _itemQuantityVariable[item.Id].SolutionValue();
+                results.ObjectiveValue = (_objective.Value() / 100);
+                results.Discount = (_itemDiscountVariable.SolutionValue() / 100);
+            }
+
             return results;
         }
 
-        private void CreateVariables(IEnumerable<MenuItem> items)
+        private void CreateVariables()
         {
-            int n = items.Count();
-            var itemArray = items.ToArray();
+            _itemDiscountVariable = _model.MakeIntVar(0.0, _totalPrice * 100, $"DiscountInCents");
 
-            _v = new GRBVar[n];
-
-            for (int i = 0; i < n; i++)
-            {
-                _v[i] = _model.AddVar(0.0, 8.0, 0.0, GRB.INTEGER, $"x[{i}]");
-                Console.WriteLine($"x[{i}] - {itemArray[i].Name}");
-            }
-
-            _model.Update();
+            _itemQuantityVariable = new Variable[_items.Count()];
+            foreach (var item in _items)
+                _itemQuantityVariable[item.Id] = _model.MakeIntVar(0.0, _totalPrice, $"{item.Name}_Quantity");
         }
 
-        private void CreateObjective(IEnumerable<MenuItem> items)
+        private void CreateObjective()
         {
-            // Minimize the cost of the items that have been selected
-            GRBLinExpr expr = 0.0;
-            foreach (var item in items)
-                expr.AddTerm(item.Cost, _v[item.Id]);
-
-            _model.SetObjective(expr, GRB.MINIMIZE);
+            // Maximize the profit on the sale
+            _objective = _model.Objective();
+            _objective.SetMaximization();
+            _objective.AddOffset(_totalPrice * 100);
+            _objective.SetCoefficient(_itemDiscountVariable, -1.0);
+            foreach (var item in _items)
+                _objective.SetCoefficient(_itemQuantityVariable[item.Id], (-item.Cost * 100));
         }
 
-        private void CreateConstraints(double totalPrice, IEnumerable<MenuItem> items)
+        private void CreateConstraints(bool allowDiscounts)
         {
-            // Total price of items selected, must be exactly 15.05
-            GRBLinExpr expr = 0.0;
-            foreach (var item in items)
-                expr.AddTerm(item.Price, _v[item.Id]);
+            Constraint discountConstraint = _model.MakeConstraint("Discount");
+            discountConstraint.SetCoefficient(_itemDiscountVariable, 1.0);
+            discountConstraint.SetLb(0.0);
+            if (allowDiscounts)
+                discountConstraint.SetUb(_totalPrice * 100);
+            else
+                discountConstraint.SetUb(0.0);
 
-            _model.AddConstr(expr == totalPrice, $"Sum_Prices_Equal_{totalPrice}");
-            Console.WriteLine($"Sum_Prices_Equals_{totalPrice}");
-
-            _model.Update();
+            // Total price of items selected (minus discount) must be exactly 15.05
+            var profitConstraint = _model.MakeConstraint($"SumOfPrices_Equals_{_totalPrice.ToString()}");
+            profitConstraint.SetLb(_totalPrice * 100);
+            profitConstraint.SetUb(_totalPrice * 100);
+            profitConstraint.SetCoefficient(_itemDiscountVariable, -1.0);
+            foreach (var item in _items)
+                profitConstraint.SetCoefficient(_itemQuantityVariable[item.Id], (item.Price * 100));
         }
 
     }

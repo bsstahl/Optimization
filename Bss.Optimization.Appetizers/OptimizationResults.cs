@@ -10,5 +10,6 @@ namespace Bss.Optimization.Appetizers
     {
         public double ObjectiveValue { get; set; }
         public double[] Items { get; set; }
+        public double Discount { get; set; }
     }
 }

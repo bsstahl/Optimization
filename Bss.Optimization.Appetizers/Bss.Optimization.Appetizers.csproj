@@ -54,8 +54,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gurobi65.NET">
-      <HintPath>..\..\..\..\..\..\gurobi650\win64\bin\Gurobi65.NET.dll</HintPath>
+    <Reference Include="Google.OrTools, Version=2.0.3322.3902, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Google.OrTools.2.0.3322\lib\net40\Google.OrTools.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -74,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
