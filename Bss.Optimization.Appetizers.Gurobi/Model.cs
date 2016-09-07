@@ -29,7 +29,7 @@ namespace Bss.Optimization.Appetizers.Gurobi
             _model.Optimize();
 
             var results = new OptimizationResults();
-            results.Items = _model.Get(GRB.DoubleAttr.X, _v);
+            results.Items = _model.Get(GRB.DoubleAttr.X, _v).ToIntArray();
             results.ObjectiveValue = _model.Get(GRB.DoubleAttr.ObjVal);
             return results;
         }

@@ -33,12 +33,12 @@ namespace Bss.Optimization.Appetizers.Glop
             if (optimizationStatus == Solver.OPTIMAL)
             {
                 int n = _itemQuantityVariable.Count();
-                results.Items = new double[n];
+                results.Items = new int[n];
                 results.ObjectiveValue = 0.0;
 
                 foreach (var item in _items)
-                    results.Items[item.Id] = _itemQuantityVariable[item.Id].SolutionValue();
-                results.ObjectiveValue = (_objective.Value() / 100);
+                    results.Items[item.Id] = Convert.ToInt32(_itemQuantityVariable[item.Id].SolutionValue());
+                results.ObjectiveValue = _objective.Value();
             }
 
             return results;
