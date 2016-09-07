@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bss.Optimization.Appetizers
+namespace Bss.Optimization.Appetizers.Entities
 {
     public class OptimizationResults
     {

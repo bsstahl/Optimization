@@ -1,9 +1,9 @@
-﻿using Gurobi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bss.Optimization.Appetizers.Entities;
 
 namespace Bss.Optimization.Appetizers
 {
@@ -13,11 +13,16 @@ namespace Bss.Optimization.Appetizers
 
         static void Main(string[] args)
         {
-            var env = new GRBEnv("Menu.log");
             var items = new MenuItemCollection();
-            var c = new Model(env, items, 15.05);
-            var results = c.Optimize();
+            var c = GetOptimizer();
+            var results = c.GetQuantities(items, 15.05);
             DisplayResults(results, items);
+        }
+
+        private static Interfaces.IAppetizerOptimizer GetOptimizer()
+        {
+            // return new Bss.Optimization.Appetizers.Gurobi.Model();
+            return new Bss.Optimization.Appetizers.Glop.Model();
         }
 
         private static void DisplayResults(OptimizationResults results, IEnumerable<MenuItem> items)
