@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.OrTools, Version=2.0.3322.3902, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Google.OrTools.2.0.3322\lib\net40\Google.OrTools.dll</HintPath>
+    <Reference Include="Google.OrTools, Version=4.3.6092.29033, Culture=neutral, PublicKeyToken=1c24263cc2e8f4d0, processorArchitecture=x86">
+      <HintPath>..\packages\Google.OrTools.AnyCpu.4.3.6092.29033\lib\net40\Google.OrTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
