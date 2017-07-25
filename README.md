@@ -37,7 +37,7 @@ details of which can be found on [developers.google.com](https://developers.goog
  
 ## Bss.Optimization.Pottery.sln
 Three solution implementations for the Pete's Pottery Paradise problem described in the
-presentation, [A Developer's Guide to Finding Optimal Solutions](http://1drv.ms/1QqBcbh). 
+presentation, [A Developer's Guide to Finding Optimal Solutions](http://1drv.ms/1QqBcbh) and others. 
 All solutions exist within the confines of a single Visual Studio solution file.
 
 **Note: To switch between the various optimizers, uncomment the appropriate 
