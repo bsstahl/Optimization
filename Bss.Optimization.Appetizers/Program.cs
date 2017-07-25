@@ -24,9 +24,9 @@ namespace Bss.Optimization.Appetizers
 
         private static Interfaces.IAppetizerOptimizer GetOptimizer()
         {
-            return new Bss.Optimization.Appetizers.Naive.Model();
+            // return new Bss.Optimization.Appetizers.Naive.Model();
             // return new Bss.Optimization.Appetizers.Gurobi.Model();
-            // return new Bss.Optimization.Appetizers.Glop.Model();
+            return new Bss.Optimization.Appetizers.Glop.Model();
         }
 
     }

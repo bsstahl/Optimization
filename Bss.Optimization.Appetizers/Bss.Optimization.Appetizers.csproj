@@ -84,10 +84,6 @@
       <Project>{45d8f3ae-bda7-4107-ad93-3ec845152784}</Project>
       <Name>Bss.Optimization.Appetizers.Glop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bss.Optimization.Appetizers.Gurobi\Bss.Optimization.Appetizers.Gurobi.csproj">
-      <Project>{147f3ea1-e76f-47fa-867b-06a4e02f284f}</Project>
-      <Name>Bss.Optimization.Appetizers.Gurobi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bss.Optimization.Appetizers.Naive\Bss.Optimization.Appetizers.Naive.csproj">
       <Project>{a84321bc-4499-476a-81fd-6405526b32ef}</Project>
       <Name>Bss.Optimization.Appetizers.Naive</Name>
