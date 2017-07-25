@@ -54,8 +54,8 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.OrTools, Version=6.2.4388.40366, Culture=neutral, PublicKeyToken=e5e5a4177ad79658, processorArchitecture=AMD64">
-      <HintPath>..\packages\Google.OrTools.6.2.4388\lib\net40\Google.OrTools.dll</HintPath>
+    <Reference Include="Google.OrTools, Version=4.3.6092.29033, Culture=neutral, PublicKeyToken=1c24263cc2e8f4d0, processorArchitecture=x86">
+      <HintPath>..\packages\Google.OrTools.AnyCpu.4.3.6092.29033\lib\net40\Google.OrTools.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bss.Optimization.Appetizers.Common\Bss.Optimization.Appetizers.Common.csproj">
