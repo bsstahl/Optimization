@@ -8,26 +8,26 @@ Details on getting an evaluation license to run the full samples can
 be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).**
 
 
-## Bss.Optimization.Appetizers.sln
+## Bss.Optimization.Appetizers.sln (all solvers) & Bss.Optimization.Appetizers.Glop.sln (excludes Gurobi)
 Multiple solution implementations to the very simple, knapsack-style problem described
 in [XKCD 287](http://xkcd.com/287). 
 
-**Note: To switch between the various optimizers, uncomment the appropriate 
+** Note: To switch between the various optimizers, uncomment the appropriate 
 implementation in the GetOptimizer method found in the 
 Bss.Optimization.Appetizers.Program.cs file.**
 
-###Naive Solution (new)
+### Naive Solution
 Traverses the entire possible search-space attempting to locate feasible solutions, 
 then searches all feasible solutions to determine the optimal solution.  This implementation
 fails when the search space is very large.
 
-###LP Optimization using the Gurobi Solver
+### LP Optimization using the Gurobi Solver
 Uses a Linear Program with integer constraints and a linear objective along with integer 
 variables to determine the optimal solution. This implementation works well even with an
 extremely large search space.  The Gurobi solver requires a license, details of which can 
 be found on [Gurobi.com](http://www.gurobi.com/).
 
-###LP Optimization using the Google Solver (new)
+### LP Optimization using the Google Solver
 Uses a Linear Program with integer constraints and a linear objective along with integer 
 variables to determine the optimal solution. This implementation works well even with an
 extremely large search space.  The GLOP solver is Google's open-source linear programming system, 
@@ -35,7 +35,7 @@ details of which can be found on [developers.google.com](https://developers.goog
 
 
  
-## Bss.Optimization.Pottery.sln
+## Bss.Optimization.Pottery.sln (all solvers) & Bss.Optimization.Pottery.Glop.sln (excludes Gurobi)
 Three solution implementations for the Pete's Pottery Paradise problem described in the
 presentation, [A Developer's Guide to Finding Optimal Solutions](http://1drv.ms/1QqBcbh) and others. 
 All solutions exist within the confines of a single Visual Studio solution file.
@@ -44,18 +44,18 @@ All solutions exist within the confines of a single Visual Studio solution file.
 implementation in the Create method found in the 
 Bss.Optimization.Pottery.Test.Extensions.cs file.**
 
-###Naive Solution
+### Naive Solution
 Traverses the entire possible search-space attempting to locate feasible solutions, 
 then searches all feasible solutions to determine the optimal solution.  This implementation
 fails when the search space is very large.
 
-###LP Optimization using the Gurobi Solver
+### LP Optimization using the Gurobi Solver
 Uses a Linear Program with linear constraints and a linear objective along with integer 
 variables to determine the optimal solution. This implementation works well even with an
 extremely large search space.  The Gurobi solver requires a license, details of which can 
 be found on [Gurobi.com](http://www.gurobi.com/).
 
-###LP Optimization using the Google Solver (new)
+### LP Optimization using the Google Solver
 Uses a Linear Program with linear constraints and a linear objective along with integer 
 variables to determine the optimal solution. This implementation works well even with an
 extremely large search space.  The GLOP solver is Google's open-source linear programming system, 
