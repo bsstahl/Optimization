@@ -65,10 +65,6 @@
       <Project>{77242247-77c3-4409-91c2-d8a4b2c990e1}</Project>
       <Name>Bss.Optimization.Pottery.Glop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bss.Optimization.Pottery.LP\Bss.Optimization.Pottery.LP.csproj">
-      <Project>{fe7cec54-92e0-4008-ae6b-6c1cd8b71dcb}</Project>
-      <Name>Bss.Optimization.Pottery.LP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bss.Optimization.Pottery\Bss.Optimization.Pottery.csproj">
       <Project>{30b5f8db-c79d-4fdb-9957-9fdd3026c878}</Project>
       <Name>Bss.Optimization.Pottery</Name>
