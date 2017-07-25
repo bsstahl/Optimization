@@ -12,7 +12,7 @@ be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).**
 Multiple solution implementations to the very simple, knapsack-style problem described
 in [XKCD 287](http://xkcd.com/287). 
 
-** Note: To switch between the various optimizers, uncomment the appropriate 
+**Note: To switch between the various optimizers, uncomment the appropriate 
 implementation in the GetOptimizer method found in the 
 Bss.Optimization.Appetizers.Program.cs file.**
 
