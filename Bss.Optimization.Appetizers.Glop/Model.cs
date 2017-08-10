@@ -4,70 +4,70 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bss.Optimization.Appetizers.Entities;
-using Google.OrTools.LinearSolver;
+using Google.OrTools.ConstraintSolver;
 
 namespace Bss.Optimization.Appetizers.Glop
 {
-    public class Model: Interfaces.IAppetizerOptimizer
+    public class Model : Interfaces.IAppetizerOptimizer
     {
-        Solver _model;
-        Variable[] _itemQuantityVariable;
-        Objective _objective;
-        IEnumerable<MenuItem> _items;
-        double _totalPrice;
-
-
         public OptimizationResults GetQuantities(IEnumerable<MenuItem> items, double totalPrice)
         {
-            _items = items;
-            _totalPrice = totalPrice;
-            _model = Solver.CreateSolver("MipSolver", "CBC_MIXED_INTEGER_PROGRAMMING");
+            var model = new Solver("CPSolver");
+            IntVar[] itemQuantityVariable = CreateVariables(model, items);
+            CreateConstraints(model, itemQuantityVariable, items, totalPrice.ToCents());
 
-            CreateVariables();
-            CreateObjective();
-            CreateConstraints();
+            DecisionBuilder decisionBuilder = model.MakePhase(itemQuantityVariable, Solver.INT_VAR_DEFAULT, Solver.INT_VALUE_DEFAULT);
+            var optimizationStatus = model.Solve(decisionBuilder);
 
-            var results = new OptimizationResults();
+            if (!optimizationStatus)
+                throw new InvalidOperationException("Solution not found");
 
-            var optimizationStatus = _model.Solve();
-            if (optimizationStatus == Solver.OPTIMAL)
+            var results = new List<OptimizationResults>();
+            Console.WriteLine("Feasible Solutions:");
+            while (model.NextSolution())
             {
-                int n = _itemQuantityVariable.Count();
-                results.Items = new int[n];
-                results.ObjectiveValue = 0.0;
+                var solution = new OptimizationResults();
 
-                foreach (var item in _items)
-                    results.Items[item.Id] = Convert.ToInt32(_itemQuantityVariable[item.Id].SolutionValue());
-                results.ObjectiveValue = _objective.Value();
+                int n = itemQuantityVariable.Count();
+                solution.Items = new int[n];
+
+                foreach (var item in items)
+                    solution.Items[item.Id] = Convert.ToInt32(itemQuantityVariable[item.Id].Value());
+                solution.ObjectiveValue = solution.CalculateObjective(items);
+
+                Console.WriteLine(solution.ToString(items));
+
+                results.Add(solution);
             }
 
-            return results;
+            // returns the solution with the greatest # of different items (most diverse assortment)
+            // return results.Find(r => r.DistinctItemCount() == results.Max(s => s.DistinctItemCount()));
+
+            // returns the solution with the fewest # of any single item (reduce redundancy)
+            // return results.Find(r => r.MaxSingleItemCount() == results.Min(s => s.MaxSingleItemCount()));
+
+            // returns the solution with the fewest # of plates to carry (least work for the waiter)
+            // return results.Find(r => r.PlateCount() == results.Min(s => s.PlateCount()));
+
+            // returns the solution with the fewest # of different items (least work for the kitchen)
+            return results.Find(r => r.DistinctItemCount() == results.Min(s => s.DistinctItemCount()));
         }
 
-        private void CreateVariables()
+        private static IntVar[] CreateVariables(Solver model, IEnumerable<MenuItem> items)
         {
-            _itemQuantityVariable = new Variable[_items.Count()];
-            foreach (var item in _items)
-                _itemQuantityVariable[item.Id] = _model.MakeIntVar(0.0, 8.0, $"{item.Name}_Quantity");
+            var variables = new IntVar[items.Count()];
+            foreach (var item in items)
+                variables[item.Id] = model.MakeIntVar(0, 8, $"{item.Name}_Quantity");
+            return variables;
         }
 
-        private void CreateObjective()
-        {
-            // Minimize the total cost of items selected
-            _objective = _model.Objective();
-            _objective.SetMinimization();
-            foreach (var item in _items)
-                _objective.SetCoefficient(_itemQuantityVariable[item.Id], item.Cost);
-        }
-
-        private void CreateConstraints()
+        private static void CreateConstraints(Solver model, IntVar[] decisionVariables, IEnumerable<MenuItem> items, int priceInCents)
         {
             // Total price of items selected must be exactly equal to the price specified
-            var profitConstraint = _model.MakeConstraint($"SumOfPrices_Equals_{_totalPrice.ToString()}");
-            profitConstraint.SetLb(_totalPrice);
-            profitConstraint.SetUb(_totalPrice);
-            foreach (var item in _items)
-                profitConstraint.SetCoefficient(_itemQuantityVariable[item.Id], item.Price);
+            IntExpr exp = decisionVariables[0] * 0; // TODO: Is there a better way to construct an empty expression?
+            foreach (var item in items)
+                exp += decisionVariables[item.Id] * item.Price.ToCents();
+            model.Add(exp == priceInCents);
         }
 
     }
