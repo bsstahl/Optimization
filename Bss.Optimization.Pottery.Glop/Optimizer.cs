@@ -70,28 +70,34 @@ namespace Bss.Optimization.Pottery.Glop
         // This method will work irrespective of the size of the solution space
         public ProductionTarget GetTargets(double claySupply, double glazeSupply)
         {
+            // Construct the solver
             var solver = CreateLinearProgrammingSolver();
+
+            // Create the decision variables
             var xS = CreateSmallVasesVariable(solver, claySupply, glazeSupply);
             var xL = CreateLargeVasesVariable(solver, claySupply, glazeSupply);
 
+            // Create the constraints
             var c0 = CreateClayConstraint(solver, xS, xL, claySupply);
             var c1 = CreateGlazeConstraint(solver, xS, xL, glazeSupply);
 
-            // Objective: maximize 3xS + 9xL
-            Objective objective = solver.Objective();
+            // Define the Objective: maximize 3xS + 9xL
+            var objective = solver.Objective();
             objective.SetCoefficient(xS, 3);
             objective.SetCoefficient(xL, 9);
             objective.SetMaximization();
 
+            // Invoke the solver
             int resultStatus = solver.Solve();
 
-            // Check that the problem has an optimal solution.
+            // Check that the we found the optimal solution.
             if (resultStatus != Solver.OPTIMAL)
             {
-                string message = "The problem does not have an optimal solution!";
+                string message = "Optimal solution not found!";
                 throw new InvalidOperationException(message);
             }
 
+            // Retrieve the results
             return new Entities.ProductionTarget()
             {
                 Small = Convert.ToInt32(xS.SolutionValue()),
@@ -102,10 +108,10 @@ namespace Bss.Optimization.Pottery.Glop
         private static Constraint CreateClayConstraint(Solver solver, Variable xS, Variable xL, double claySupply)
         {
             // Constraint: xS + 4xL <= claySupply
-            var c = solver.MakeConstraint(0.0, claySupply);
-            c.SetCoefficient(xS, 1);
-            c.SetCoefficient(xL, 4);
-            return c;
+            var cClay = solver.MakeConstraint(0.0, claySupply);
+            cClay.SetCoefficient(xS, 1);
+            cClay.SetCoefficient(xL, 4);
+            return cClay;
         }
 
         private static Constraint CreateGlazeConstraint(Solver solver, Variable xS, Variable xL, double glazeSupply)
