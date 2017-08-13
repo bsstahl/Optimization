@@ -55,23 +55,8 @@ namespace Bss.Optimization.Sudoku
             // Display results
             foreach (var result in results)
             {
-                for (int x = 0; x < 9; x++)
-                    Console.Write("----");
+                Console.WriteLine(result.GetDisplay());
                 Console.WriteLine("");
-
-                for (int y = 0; y < 9; y++)
-                {
-                    for (int x = 0; x < 9; x++)
-                    {
-                        int index = (y * 9) + x;
-                        Console.Write($"| {result[index].Value} ");
-                    }
-                    Console.WriteLine("|");
-
-                    for (int x = 0; x < 9; x++)
-                        Console.Write("----");
-                    Console.WriteLine("");
-                }
             }
         }
     }
