@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bss.Optimization.Sudoku.Entities;
 using Bss.Optimization.Sudoku.Interfaces;
 using Google.OrTools.ConstraintSolver;
 
@@ -11,6 +12,12 @@ namespace Bss.Optimization.Sudoku.GoogleCp
     public class Model : ISudokuSolver
     {
 
+        public IEnumerable<Grid> Solve(IEnumerable<Hint> hints)
+        {
+            throw new NotImplementedException();
+        }
+
+        
         // Takes a collection of MenuItem
         // Returns an OptimizationResult (collection of grid solutions?)
         public Object GetQuantities(IEnumerable<Object> items, double totalPrice)
@@ -75,7 +82,6 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             //    exp += decisionVariables[item.Id] * item.Price.ToCents();
             // model.Add(exp == price);
         }
-
 
     }
 }
