@@ -94,5 +94,56 @@ namespace Bss.Optimization.Sudoku.Extensions
 
             return hints;
         }
+
+        public static IEnumerable<GridCell> CreateEasyPuzzle(this IEnumerable<GridCell> ignore)
+        {
+            var hints = new List<GridCell>();
+            hints.AddHint(1, 0, 8);
+            hints.AddHint(3, 0, 1);
+            hints.AddHint(5, 0, 4);
+            hints.AddHint(6, 0, 9);
+            hints.AddHint(8, 0, 3);
+
+            hints.AddHint(0, 1, 1);
+            hints.AddHint(1, 1, 9);
+            hints.AddHint(2, 1, 2);
+            hints.AddHint(4, 1, 5);
+            hints.AddHint(6, 1, 6);
+
+            hints.AddHint(0, 2, 7);
+            hints.AddHint(4, 2, 6);
+            hints.AddHint(5, 2, 9);
+
+            hints.AddHint(2, 3, 1);
+            hints.AddHint(5, 3, 2);
+            hints.AddHint(6, 3, 7);
+            hints.AddHint(7, 3, 6);
+
+            hints.AddHint(3, 4, 5);
+            hints.AddHint(5, 4, 6);
+
+            hints.AddHint(1, 5, 6);
+            hints.AddHint(2, 5, 3);
+            hints.AddHint(3, 5, 7);
+            hints.AddHint(6, 5, 4);
+
+            hints.AddHint(3, 6, 9);
+            hints.AddHint(4, 6, 2);
+            hints.AddHint(8, 6, 5);
+
+            hints.AddHint(2, 7, 7);
+            hints.AddHint(4, 7, 8);
+            hints.AddHint(6, 7, 2);
+            hints.AddHint(7, 7, 3);
+            hints.AddHint(8, 7, 4);
+
+            hints.AddHint(0, 8, 5);
+            hints.AddHint(2, 8, 8);
+            hints.AddHint(3, 8, 3);
+            hints.AddHint(5, 8, 7);
+            hints.AddHint(7, 8, 9);
+
+            return hints;
+        }
     }
 }
