@@ -53,6 +53,7 @@ namespace Bss.Optimization.Sudoku
             var results = model.Solve(hints);
 
             // Display results
+            Console.WriteLine($"Number of valid solutions: {results.Count()}");
             foreach (var result in results)
             {
                 Console.WriteLine(result.GetDisplay());
