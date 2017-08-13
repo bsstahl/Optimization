@@ -21,6 +21,83 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             for (int i = 0; i < 81; i++)
                 x[i] = model.MakeIntVar(1, 9, $"x[{i}]");
 
+            // Create constraints
+            for (int group = 0; group < 9; group++)
+            {
+                // Create row constraints
+                IntVarVector row = new IntVarVector();
+                for (int i = 0; i < 9; i++)
+                {
+                    int index = (group * 9) + i;
+                    row.Add(x[index]);
+                }
+                var rowConstraint = model.MakeAllDifferent(row);
+                model.Add(rowConstraint);
+
+                // Create column constraints
+                IntVarVector col = new IntVarVector();
+                for (int i = 0; i < 9; i++)
+                {
+                    int index = (i * 9) + group;
+                    col.Add(x[index]);
+                }
+                var colConstraint = model.MakeAllDifferent(col);
+                model.Add(colConstraint);
+
+                // Create region constraints
+                int regionStartX = (group % 3) * 3;
+                int regionStartY = (group / 3) * 3;
+                IntVarVector region = new IntVarVector();
+                for (int i = 0; i < 9; i++)
+                {
+                    int deltaX = (i % 3);
+                    int deltaY = (i / 3);
+                    int xLoc = regionStartX + deltaX;
+                    int yLoc = regionStartY + deltaY;
+                    int index = (yLoc * 9) + xLoc;
+                    region.Add(x[index]);
+                }
+                var regionConstraint = model.MakeAllDifferent(region);
+                model.Add(regionConstraint);
+            }
+
+            // Add hints
+            foreach (var hint in hints)
+            {
+                int index = (hint.Y * 9) + hint.X;
+                model.Add(x[index] == hint.Value);
+            }
+
+            DecisionBuilder decisionBuilder = model.MakePhase(x, Solver.INT_VAR_DEFAULT, Solver.INT_VALUE_DEFAULT);
+            var optimizationStatus = model.Solve(decisionBuilder);
+
+            if (!optimizationStatus)
+                throw new InvalidOperationException("Solution not found");
+
+            // Returns an OptimizationResult (collection of grid solutions?)
+            // var results = new List<object>();
+
+            // Console.WriteLine("Feasible Solutions:");
+            int solutionCount = 0;
+            while (model.NextSolution())
+            {
+                solutionCount++;
+                // var solution = new object(); // OptimizationResult
+
+                // int n = itemQuantityVariable.Count();
+                // solution.Items = new int[n];
+
+                //foreach (var item in items)
+                //    solution.Items[item.Id] = Convert.ToInt32(itemQuantityVariable[item.Id].Value());
+                //solution.ObjectiveValue = solution.CalculateObjective(items);
+
+                // Console.WriteLine(solution.ToString());
+
+                // results.Add(solution);
+            }
+
+            Console.WriteLine(solutionCount);
+
             throw new NotImplementedException();
         }
 

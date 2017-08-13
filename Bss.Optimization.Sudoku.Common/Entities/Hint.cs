@@ -8,5 +8,51 @@ namespace Bss.Optimization.Sudoku.Entities
 {
     public class Hint
     {
+        byte _x;
+        byte _y;
+        byte _value;
+
+        public byte X
+        {
+            get { return _x; }
+            set
+            {
+                if (value > 8)
+                    throw new ArgumentOutOfRangeException();
+                _x = value;
+            }
+        }
+
+        public byte Y
+        {
+            get { return _y; }
+            set
+            {
+                if (value > 8)
+                    throw new ArgumentOutOfRangeException();
+                _y = value;
+            }
+        }
+
+        public byte Value
+        {
+            get { return _value; }
+            set
+            {
+                if ((value > 9) || (value < 1))
+                    throw new ArgumentOutOfRangeException();
+                _value = value;
+            }
+        }
+
+        public static Hint Create(byte x, byte y, byte value)
+        {
+            return new Hint()
+            {
+                X = x,
+                Y = y,
+                Value = value
+            };
+        }
     }
 }
