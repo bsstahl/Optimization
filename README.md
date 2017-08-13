@@ -8,6 +8,15 @@ Details on getting an evaluation license to run the full samples can
 be found on [Gurobi.com](http://www.gurobi.com/downloads/evaluation-request).**
 
 
+## Bss.Optimization.Sudoku.sln (Google CP Only)
+
+### Constraint Solver
+Uses the Google Constraint solver to find all valid solutions to a sudoku 
+puzzle based on the input "hints". Project is limited, by code, to 100000 
+solutions in order to protect system memory and CPU.
+
+
+
 ## Bss.Optimization.Appetizers.sln (all solvers) & Bss.Optimization.Appetizers.Glop.sln (excludes Gurobi)
 Multiple solution implementations to the very simple, knapsack-style problem described
 in [XKCD 287](http://xkcd.com/287). 
