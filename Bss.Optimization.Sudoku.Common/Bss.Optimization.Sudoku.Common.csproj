@@ -43,6 +43,7 @@
     <Compile Include="Entities\GridCell.cs" />
     <Compile Include="Extensions\DisplayExtensions.cs" />
     <Compile Include="Extensions\HintExtensions.cs" />
+    <Compile Include="Extensions\PuzzleExtensions.cs" />
     <Compile Include="Interfaces\ISudokuSolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
