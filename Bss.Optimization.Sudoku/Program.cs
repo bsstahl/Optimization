@@ -14,7 +14,7 @@ namespace Bss.Optimization.Sudoku
         {
             var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
 
-            var hints = new List<Hint>();
+            var hints = new List<GridCell>();
             hints.AddHint(1, 0, 4);
             hints.AddHint(4, 0, 6);
             hints.AddHint(7, 0, 1);
@@ -51,6 +51,28 @@ namespace Bss.Optimization.Sudoku
             hints.AddHint(7, 8, 3);
 
             var results = model.Solve(hints);
+
+            // Display results
+            foreach (var result in results)
+            {
+                for (int x = 0; x < 9; x++)
+                    Console.Write("----");
+                Console.WriteLine("");
+
+                for (int y = 0; y < 9; y++)
+                {
+                    for (int x = 0; x < 9; x++)
+                    {
+                        int index = (y * 9) + x;
+                        Console.Write($"| {result[index].Value} ");
+                    }
+                    Console.WriteLine("|");
+
+                    for (int x = 0; x < 9; x++)
+                        Console.Write("----");
+                    Console.WriteLine("");
+                }
+            }
         }
     }
 }

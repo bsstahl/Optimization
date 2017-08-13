@@ -40,8 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Grid.cs" />
-    <Compile Include="Entities\Hint.cs" />
+    <Compile Include="Entities\GridCell.cs" />
     <Compile Include="Extensions\HintExtensions.cs" />
     <Compile Include="Interfaces\ISudokuSolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

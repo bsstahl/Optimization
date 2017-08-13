@@ -9,6 +9,6 @@ namespace Bss.Optimization.Sudoku.Interfaces
 {
     public interface ISudokuSolver
     {
-        IEnumerable<Grid> Solve(IEnumerable<Hint> hints);
+        IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints);
     }
 }

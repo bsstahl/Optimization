@@ -12,7 +12,7 @@ namespace Bss.Optimization.Sudoku.GoogleCp
     public class Model : ISudokuSolver
     {
 
-        public IEnumerable<Grid> Solve(IEnumerable<Hint> hints)
+        public IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints)
         {
             var model = new Solver("CPSolver");
 
@@ -74,31 +74,22 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             if (!optimizationStatus)
                 throw new InvalidOperationException("Solution not found");
 
-            // Returns an OptimizationResult (collection of grid solutions?)
-            // var results = new List<object>();
-
-            // Console.WriteLine("Feasible Solutions:");
-            int solutionCount = 0;
+            var results = new List<GridCell[]>();
             while (model.NextSolution())
             {
-                solutionCount++;
-                // var solution = new object(); // OptimizationResult
+                var solution = new GridCell[81];
 
-                // int n = itemQuantityVariable.Count();
-                // solution.Items = new int[n];
+                for (int i = 0; i < 81; i++)
+                {
+                    byte xLoc = Convert.ToByte(i % 9);
+                    byte yLoc = Convert.ToByte(i / 9);
+                    solution[i] = GridCell.Create(xLoc, yLoc, Convert.ToByte(x[i].Value()));
+                }
 
-                //foreach (var item in items)
-                //    solution.Items[item.Id] = Convert.ToInt32(itemQuantityVariable[item.Id].Value());
-                //solution.ObjectiveValue = solution.CalculateObjective(items);
-
-                // Console.WriteLine(solution.ToString());
-
-                // results.Add(solution);
+                results.Add(solution);
             }
 
-            Console.WriteLine(solutionCount);
-
-            throw new NotImplementedException();
+            return results;
         }
 
 

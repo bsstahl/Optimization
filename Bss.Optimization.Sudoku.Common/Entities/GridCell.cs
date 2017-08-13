@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bss.Optimization.Sudoku.Entities
 {
-    public class Hint
+    public class GridCell
     {
         byte _x;
         byte _y;
@@ -45,9 +45,9 @@ namespace Bss.Optimization.Sudoku.Entities
             }
         }
 
-        public static Hint Create(byte x, byte y, byte value)
+        public static GridCell Create(byte x, byte y, byte value)
         {
-            return new Hint()
+            return new GridCell()
             {
                 X = x,
                 Y = y,
