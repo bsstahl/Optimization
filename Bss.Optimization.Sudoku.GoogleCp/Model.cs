@@ -12,6 +12,8 @@ namespace Bss.Optimization.Sudoku.GoogleCp
     public class Model : ISudokuSolver
     {
 
+        const int MAX_SOLUTIONS = 100000;
+
         public IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints)
         {
             var model = new Solver("CPSolver");
@@ -29,6 +31,9 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             var results = new List<GridCell[]>();
             while (model.NextSolution())
             {
+                if (results.Count() > MAX_SOLUTIONS)
+                    throw new InvalidOperationException($"Maximum number of solutions ({MAX_SOLUTIONS}) exceeded");
+
                 var solution = new GridCell[81];
 
                 for (int i = 0; i < 81; i++)
