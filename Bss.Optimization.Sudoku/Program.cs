@@ -14,7 +14,10 @@ namespace Bss.Optimization.Sudoku
         {
             var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
 
+            // Uncomment the puzzle you want to solve
             var puzzleHints = (null as IEnumerable<GridCell>).CreateDemoPuzzle();
+            // var puzzleHints = (null as IEnumerable<GridCell>).CreateHardPuzzle();
+
             var results = model.Solve(puzzleHints);
 
             // Display results
