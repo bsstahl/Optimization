@@ -17,7 +17,7 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             var model = new Solver("CPSolver");
             IntVar[] x = CreateVariables(model);  // Create variables
             CreateConstraints(model, x); // Create constraints
-            AddHints(model, x, hints); // Add hints
+            AddHints(model, x, hints); // Add solution hints (sudoku given values)
 
             DecisionBuilder decisionBuilder = model.MakePhase(x, Solver.INT_VAR_DEFAULT, Solver.INT_VALUE_DEFAULT);
             var optimizationStatus = model.Solve(decisionBuilder);
@@ -46,6 +46,7 @@ namespace Bss.Optimization.Sudoku.GoogleCp
 
         private static IntVar[] CreateVariables(Solver model)
         {
+            // The sudoku grid is modeled here as a linear array
             var x = new IntVar[81];
             for (int i = 0; i < 81; i++)
                 x[i] = model.MakeIntVar(1, 9, $"x[{i}]");
@@ -96,6 +97,7 @@ namespace Bss.Optimization.Sudoku.GoogleCp
 
         private static void AddHints(Solver model, IntVar[] x, IEnumerable<GridCell> hints)
         {
+            // Constrains each cell we know the value of to that specific value
             if (hints != null)
                 foreach (var hint in hints)
                 {
