@@ -59,6 +59,7 @@ namespace Bss.Optimization.Sudoku
                 Console.WriteLine(result.GetDisplay());
                 Console.WriteLine("");
             }
+            Console.WriteLine($"Number of valid solutions: {results.Count()}");
         }
     }
 }
