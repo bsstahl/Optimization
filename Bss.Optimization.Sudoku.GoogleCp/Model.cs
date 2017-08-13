@@ -14,10 +14,17 @@ namespace Bss.Optimization.Sudoku.GoogleCp
 
         public IEnumerable<Grid> Solve(IEnumerable<Hint> hints)
         {
+            var model = new Solver("CPSolver");
+
+            // Create variables
+            var x = new IntVar[81];
+            for (int i = 0; i < 81; i++)
+                x[i] = model.MakeIntVar(1, 9, $"x[{i}]");
+
             throw new NotImplementedException();
         }
 
-        
+
         // Takes a collection of MenuItem
         // Returns an OptimizationResult (collection of grid solutions?)
         public Object GetQuantities(IEnumerable<Object> items, double totalPrice)

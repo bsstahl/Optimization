@@ -10,6 +10,8 @@ namespace Bss.Optimization.Sudoku
     {
         static void Main(string[] args)
         {
+            var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
+            var results = model.Solve(null);
         }
     }
 }
