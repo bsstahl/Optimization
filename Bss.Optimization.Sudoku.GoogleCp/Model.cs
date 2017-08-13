@@ -15,13 +15,45 @@ namespace Bss.Optimization.Sudoku.GoogleCp
         public IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints)
         {
             var model = new Solver("CPSolver");
+            IntVar[] x = CreateVariables(model);  // Create variables
+            CreateConstraints(model, x); // Create constraints
+            AddHints(model, x, hints); // Add hints
 
-            // Create variables
+            DecisionBuilder decisionBuilder = model.MakePhase(x, Solver.INT_VAR_DEFAULT, Solver.INT_VALUE_DEFAULT);
+            var optimizationStatus = model.Solve(decisionBuilder);
+
+            if (!optimizationStatus)
+                throw new InvalidOperationException("Solution not found");
+
+            // Iterate solutions
+            var results = new List<GridCell[]>();
+            while (model.NextSolution())
+            {
+                var solution = new GridCell[81];
+
+                for (int i = 0; i < 81; i++)
+                {
+                    byte xLoc = Convert.ToByte(i % 9);
+                    byte yLoc = Convert.ToByte(i / 9);
+                    solution[i] = GridCell.Create(xLoc, yLoc, Convert.ToByte(x[i].Value()));
+                }
+
+                results.Add(solution);
+            }
+
+            return results;
+        }
+
+        private static IntVar[] CreateVariables(Solver model)
+        {
             var x = new IntVar[81];
             for (int i = 0; i < 81; i++)
                 x[i] = model.MakeIntVar(1, 9, $"x[{i}]");
+            return x;
+        }
 
-            // Create constraints
+        private static void CreateConstraints(Solver model, IntVar[] x)
+        {
             for (int group = 0; group < 9; group++)
             {
                 // Create row constraints
@@ -60,37 +92,16 @@ namespace Bss.Optimization.Sudoku.GoogleCp
                 var regionConstraint = model.MakeAllDifferent(region);
                 model.Add(regionConstraint);
             }
+        }
 
-            // Add hints
+        private static void AddHints(Solver model, IntVar[] x, IEnumerable<GridCell> hints)
+        {
             if (hints != null)
                 foreach (var hint in hints)
                 {
                     int index = (hint.Y * 9) + hint.X;
                     model.Add(x[index] == hint.Value);
                 }
-
-            DecisionBuilder decisionBuilder = model.MakePhase(x, Solver.INT_VAR_DEFAULT, Solver.INT_VALUE_DEFAULT);
-            var optimizationStatus = model.Solve(decisionBuilder);
-
-            if (!optimizationStatus)
-                throw new InvalidOperationException("Solution not found");
-
-            var results = new List<GridCell[]>();
-            while (model.NextSolution())
-            {
-                var solution = new GridCell[81];
-
-                for (int i = 0; i < 81; i++)
-                {
-                    byte xLoc = Convert.ToByte(i % 9);
-                    byte yLoc = Convert.ToByte(i / 9);
-                    solution[i] = GridCell.Create(xLoc, yLoc, Convert.ToByte(x[i].Value()));
-                }
-
-                results.Add(solution);
-            }
-
-            return results;
         }
 
     }
