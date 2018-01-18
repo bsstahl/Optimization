@@ -12,7 +12,9 @@ namespace Bss.Optimization.Sudoku
     {
         static void Main(string[] args)
         {
-            var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
+            // Uncomment the model you wish to use
+            // var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
+            var model = new Bss.Optimization.Sudoku.MSSolverCp.Model();
 
             // Uncomment the puzzle you want to solve
             var puzzleHints = (null as IEnumerable<GridCell>).CreateDemoPuzzle();
