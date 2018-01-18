@@ -97,6 +97,10 @@
       <Project>{3a4fc231-7310-45d0-8ee6-0eaecfc33444}</Project>
       <Name>Bss.Optimization.Sudoku.GoogleCp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bss.Optimization.Sudoku.MSSolverCp\Bss.Optimization.Sudoku.MSSolverCp.csproj">
+      <Project>{b0b65293-33cc-4f31-8608-abcda744a35f}</Project>
+      <Name>Bss.Optimization.Sudoku.MSSolverCp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bss.Optimization.Sudoku.Entities;
+using Bss.Optimization.Sudoku.Exceptions;
 using Bss.Optimization.Sudoku.Interfaces;
 using Google.OrTools.ConstraintSolver;
 
@@ -13,6 +14,13 @@ namespace Bss.Optimization.Sudoku.GoogleCp
     {
 
         const int MAX_SOLUTIONS = 100000;
+
+        public string SolverName { get; private set; }
+
+        public Model()
+        {
+            this.SolverName = "N/A";
+        }
 
         public IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints)
         {
@@ -25,14 +33,14 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             var optimizationStatus = model.Solve(decisionBuilder);
 
             if (!optimizationStatus)
-                throw new InvalidOperationException("Solution not found");
+                throw new NoFeasibleSolutionException();
 
             // Iterate solutions
             var results = new List<GridCell[]>();
             while (model.NextSolution())
             {
                 if (results.Count() > MAX_SOLUTIONS)
-                    throw new InvalidOperationException($"Maximum number of solutions ({MAX_SOLUTIONS}) exceeded");
+                    throw new TooManySolutionsException(MAX_SOLUTIONS);
 
                 var solution = new GridCell[81];
 
@@ -45,6 +53,8 @@ namespace Bss.Optimization.Sudoku.GoogleCp
 
                 results.Add(solution);
             }
+
+            this.SolverName = model.GetType().FullName;
 
             return results;
         }
