@@ -13,13 +13,14 @@ namespace Bss.Optimization.Sudoku
         static void Main(string[] args)
         {
             // Uncomment the model you wish to use
-            // var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
-            var model = new Bss.Optimization.Sudoku.MSSolverCp.Model();
+            var model = new Bss.Optimization.Sudoku.GoogleCp.Model();
+            // var model = new Bss.Optimization.Sudoku.MSSolverCp.Model();
 
             // Uncomment the puzzle you want to solve
-            var puzzleHints = (null as IEnumerable<GridCell>).CreateDemoPuzzle();
+            // var puzzleHints = (null as IEnumerable<GridCell>).CreateDemoPuzzle();
             // var puzzleHints = (null as IEnumerable<GridCell>).CreateEasyPuzzle();
             // var puzzleHints = (null as IEnumerable<GridCell>).CreateHardPuzzle();
+            var puzzleHints = (null as IEnumerable<GridCell>).CreateMultipleSolutionPuzzle();
 
             var results = model.Solve(puzzleHints);
 
