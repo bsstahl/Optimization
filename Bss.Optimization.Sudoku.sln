@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5185D13-B903-4475-95E5-9FFC4D360C3E}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Sudoku.Common", "Bss.Optimization.Sudoku.Common\Bss.Optimization.Sudoku.Common.csproj", "{290E5229-59DC-4CCF-A194-1380514A46DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Sudoku.GoogleCp", "Bss.Optimization.Sudoku.GoogleCp\Bss.Optimization.Sudoku.GoogleCp.csproj", "{3A4FC231-7310-45D0-8EE6-0EAECFC33444}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bss.Optimization.Sudoku.MSSolverCp", "Bss.Optimization.Sudoku.MSSolverCp\Bss.Optimization.Sudoku.MSSolverCp.csproj", "{B0B65293-33CC-4F31-8608-ABCDA744A35F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,8 +63,23 @@ Global
 		{3A4FC231-7310-45D0-8EE6-0EAECFC33444}.Release|x64.Build.0 = Release|Any CPU
 		{3A4FC231-7310-45D0-8EE6-0EAECFC33444}.Release|x86.ActiveCfg = Release|Any CPU
 		{3A4FC231-7310-45D0-8EE6-0EAECFC33444}.Release|x86.Build.0 = Release|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Debug|x64.Build.0 = Debug|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Debug|x86.Build.0 = Debug|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Release|x64.ActiveCfg = Release|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Release|x64.Build.0 = Release|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Release|x86.ActiveCfg = Release|Any CPU
+		{B0B65293-33CC-4F31-8608-ABCDA744A35F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E037E5E-3C7B-40EC-B6F1-0EB259DA0297}
 	EndGlobalSection
 EndGlobal
