@@ -26,6 +26,7 @@ namespace Bss.Optimization.Sudoku
             var results = model.Solve(puzzleHints);
 
             // Display results
+            Console.WriteLine($"Solver used: {model.SolverName}");
             Console.WriteLine($"Number of valid solutions: {results.Count()}");
             foreach (var result in results)
             {

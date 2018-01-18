@@ -14,6 +14,13 @@ namespace Bss.Optimization.Sudoku.MSSolverCp
     {
         const int MAX_SOLUTIONS = 100000;
 
+        public string SolverName { get; private set; }
+
+        public Model()
+        {
+            this.SolverName = "N/A";
+        }
+
         public IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints)
         {
             var context = Microsoft.SolverFoundation.Services.SolverContext.GetContext();
@@ -50,10 +57,10 @@ namespace Bss.Optimization.Sudoku.MSSolverCp
                 throw new NoFeasibleSolutionException();
 
 
-            // var report = solution.GetReport(Microsoft.SolverFoundation.Services.ReportVerbosity.All);
+            var report = solution.GetReport(Microsoft.SolverFoundation.Services.ReportVerbosity.SolverDetails);
+            this.SolverName = report.SolverType.FullName;
 
             return results;
-
         }
 
     }

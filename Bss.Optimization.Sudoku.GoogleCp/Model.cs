@@ -15,6 +15,13 @@ namespace Bss.Optimization.Sudoku.GoogleCp
 
         const int MAX_SOLUTIONS = 100000;
 
+        public string SolverName { get; private set; }
+
+        public Model()
+        {
+            this.SolverName = "N/A";
+        }
+
         public IEnumerable<GridCell[]> Solve(IEnumerable<GridCell> hints)
         {
             var model = new Solver("CPSolver");
@@ -46,6 +53,8 @@ namespace Bss.Optimization.Sudoku.GoogleCp
 
                 results.Add(solution);
             }
+
+            this.SolverName = model.GetType().FullName;
 
             return results;
         }
