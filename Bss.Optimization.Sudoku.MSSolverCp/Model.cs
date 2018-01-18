@@ -30,6 +30,9 @@ namespace Bss.Optimization.Sudoku.MSSolverCp
             var results = new List<GridCell[]>();
             while (solution.Quality != Microsoft.SolverFoundation.Services.SolverQuality.Infeasible)
             {
+                if (results.Count() > MAX_SOLUTIONS)
+                    throw new TooManySolutionsException(MAX_SOLUTIONS);
+
                 var solutionDetails = new GridCell[81];
                 for (int i = 0; i < 81; i++)
                 {

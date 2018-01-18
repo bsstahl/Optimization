@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Entities\GridCell.cs" />
     <Compile Include="Exceptions\NoFeasibleSolutionException.cs" />
+    <Compile Include="Exceptions\TooManySolutionsException.cs" />
     <Compile Include="Extensions\DisplayExtensions.cs" />
     <Compile Include="Extensions\HintExtensions.cs" />
     <Compile Include="Extensions\PuzzleExtensions.cs" />

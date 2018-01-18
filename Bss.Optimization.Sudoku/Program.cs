@@ -17,10 +17,11 @@ namespace Bss.Optimization.Sudoku
             // var model = new Bss.Optimization.Sudoku.MSSolverCp.Model();
 
             // Uncomment the puzzle you want to solve
-            // var puzzleHints = (null as IEnumerable<GridCell>).CreateDemoPuzzle();
+            var puzzleHints = (null as IEnumerable<GridCell>).CreateDemoPuzzle();
             // var puzzleHints = (null as IEnumerable<GridCell>).CreateEasyPuzzle();
             // var puzzleHints = (null as IEnumerable<GridCell>).CreateHardPuzzle();
-            var puzzleHints = (null as IEnumerable<GridCell>).CreateMultipleSolutionPuzzle();
+            // var puzzleHints = (null as IEnumerable<GridCell>).CreateMultipleSolutionPuzzle();
+            // var puzzleHints = (null as IEnumerable<GridCell>).CreateTooManySolutionPuzzle();
 
             var results = model.Solve(puzzleHints);
 

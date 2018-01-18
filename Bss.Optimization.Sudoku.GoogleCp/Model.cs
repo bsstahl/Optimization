@@ -33,7 +33,7 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             while (model.NextSolution())
             {
                 if (results.Count() > MAX_SOLUTIONS)
-                    throw new InvalidOperationException($"Maximum number of solutions ({MAX_SOLUTIONS}) exceeded");
+                    throw new TooManySolutionsException(MAX_SOLUTIONS);
 
                 var solution = new GridCell[81];
 

@@ -188,5 +188,35 @@ namespace Bss.Optimization.Sudoku.Extensions
 
             return hints;
         }
+
+        public static IEnumerable<GridCell> CreateTooManySolutionPuzzle(this IEnumerable<GridCell> ignore)
+        {
+            var hints = new List<GridCell>();
+            hints.AddHint(5, 3, 7);
+            hints.AddHint(6, 3, 2);
+            hints.AddHint(7, 3, 8);
+
+            hints.AddHint(0, 4, 2);
+            hints.AddHint(4, 4, 5);
+            hints.AddHint(8, 4, 1);
+
+            hints.AddHint(1, 5, 7);
+            hints.AddHint(2, 5, 1);
+            hints.AddHint(3, 5, 4);
+            hints.AddHint(8, 5, 6);
+
+            hints.AddHint(4, 6, 9);
+            hints.AddHint(8, 6, 5);
+
+            hints.AddHint(0, 7, 7);
+            hints.AddHint(3, 7, 6);
+
+            hints.AddHint(1, 8, 9);
+            hints.AddHint(3, 8, 5);
+            hints.AddHint(6, 8, 4);
+            hints.AddHint(7, 8, 3);
+
+            return hints;
+        }
     }
 }
