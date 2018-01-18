@@ -1,4 +1,5 @@
 ﻿using Bss.Optimization.Sudoku.Entities;
+using Bss.Optimization.Sudoku.Exceptions;
 using Bss.Optimization.Sudoku.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace Bss.Optimization.Sudoku.MSSolverCp
             }
 
             if (!results.Any())
-                throw new InvalidOperationException("Solution not found");
+                throw new NoFeasibleSolutionException();
 
 
             // var report = solution.GetReport(Microsoft.SolverFoundation.Services.ReportVerbosity.All);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bss.Optimization.Sudoku.Entities;
+using Bss.Optimization.Sudoku.Exceptions;
 using Bss.Optimization.Sudoku.Interfaces;
 using Google.OrTools.ConstraintSolver;
 
@@ -25,7 +26,7 @@ namespace Bss.Optimization.Sudoku.GoogleCp
             var optimizationStatus = model.Solve(decisionBuilder);
 
             if (!optimizationStatus)
-                throw new InvalidOperationException("Solution not found");
+                throw new NoFeasibleSolutionException();
 
             // Iterate solutions
             var results = new List<GridCell[]>();
